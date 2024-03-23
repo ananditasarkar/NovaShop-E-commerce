@@ -132,3 +132,11 @@
   flex-direction: column;
   margin: 20px;
 }
+
+
+
+/* ######### product ###### */
+.product-link{
+  text-decoration: none;
+  color: black;
+}
