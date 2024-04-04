@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/cart";
 
 import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
+import toast from "react-hot-toast";
 const HomePage = () => {
+  const [cart , setCart] = useCart();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -153,7 +156,14 @@ const HomePage = () => {
                   </p>
                   <p className="card-text"> $ {p.price}</p>
                   <button className="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
-                  <button className="btn btn-secondary ms-1">ADD TO CART</button>
+                  <button className="btn btn-secondary ms-1" 
+                  onClick={() => {
+                    setCart([...cart , p])
+                    localStorage.setItem('cart', JSON.stringify([...cart , p]))
+                    toast.success("Item added successfully")
+                  } }>
+                    ADD TO CART
+                    </button>
                 </div>
               </div>
             ))}

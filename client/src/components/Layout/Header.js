@@ -3,9 +3,12 @@ import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
+import { useCart } from "../../context/cart";
+import { Badge } from "antd";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
   const categories = useCategory();
 
   const handleLogout = () => {
@@ -46,7 +49,7 @@ const Header = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle q"
                   to={"/categories"}
                   data-bs-toggle="dropdown"
                 >
@@ -71,7 +74,6 @@ const Header = () => {
                 </ul>
               </li>
 
-             
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -99,25 +101,38 @@ const Header = () => {
                     </NavLink>
                     <ul className="dropdown-menu">
                       <li>
-                        <NavLink to={`/dashboard/${
-                          auth?.user?.role === 1 ? "admin" : "user"
-                        }`} className="dropdown-item">Dashboard</NavLink>
+                        <NavLink
+                          to={`/dashboard/${
+                            auth?.user?.role === 1 ? "admin" : "user"
+                          }`}
+                          className="dropdown-item"
+                        >
+                          Dashboard
+                        </NavLink>
                       </li>
                       <li>
-                      <NavLink onClick={handleLogout} to="/login" className="dropdown-item">Sign Out</NavLink>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Sign Out
+                        </NavLink>
                       </li>
-                     
                     </ul>
                   </li>
-                  <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart (0)
-                </NavLink>
-              </li>
+                  
                 </>
               )}
-              
+              <li className="nav-item">
+                    <Badge className="mt-2" count={cart?.length} showZero>
+                      <NavLink to="/cart" className="nav-link">
+                        Cart
+                      </NavLink>
+                    </Badge>
+                  </li>
             </ul>
+            
           </div>
         </div>
       </nav>
