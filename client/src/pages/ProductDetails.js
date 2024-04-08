@@ -37,23 +37,25 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row container mt-2">
-        <div className="col-md-6">
+      <div className="row container mt-5 mx-auto">
+        <div className="col-md-6 d-flex justify-content-center">
           <img
             src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
-            className="card-img-top"
+            className="img-fluid "
             alt={product.name}
-            height="300"
-            width={"350px"}
+            // height="300"
+            // width={"350px"}
           />
         </div>
         <div className="col-md-6 ">
-          <h1 className="text-center">Product Details</h1>
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
-          <h6>Price : {product.price}</h6>
-          <h6>Category : {product?.category?.name}</h6>
+          {/* add brand name */}
+          <h6>{product.name}</h6>
+          <h6>₹ {(product.price).toFixed(2)}</h6>
           <button className="btn btn-secondary ms-1">ADD TO CART</button>
+          {/* <h6>Category : {product?.category?.name}</h6> */}
+          <hr />
+          <h4>Description </h4>
+            <h6> {product.description}</h6>
         </div>
       </div>
       <hr />

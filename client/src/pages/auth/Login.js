@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <Layout>
 
-      <div className="row login-back container my-5 mx-auto">
+      <div className="row login-back container my-md-5 mx-auto">
         
       <div className="col">
       <div className="login">
