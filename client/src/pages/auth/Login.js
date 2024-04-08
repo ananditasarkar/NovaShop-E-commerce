@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,7 @@ const Login = () => {
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
         navigate(location.state || "/");
-          
+
         toast.success("Sign in successfully", 8000);
       } else {
         toast.error(res.data.message);
@@ -43,6 +44,10 @@ const Login = () => {
 
   return (
     <Layout>
+
+      <div className="row login-back container my-5 mx-auto">
+        
+      <div className="col">
       <div className="login">
         <h1>Sign In </h1>
         <form onSubmit={handleSubmit}>
@@ -57,9 +62,7 @@ const Login = () => {
               className="form-control"
               id="exampleInputEmail1"
             />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
+            
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">
@@ -74,17 +77,23 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn text-white" style={{background: "rgb(230,0,35)"  }}>
             Sign In
           </button>
           <button
             type="submit"
-            className="btn btn-transparent"
+            className="btn btn-transparent text-primary text-decoration-underline"
             onClick={() => {navigate(`/forgot-password`)}}
           >
-            forgot password
+            forgot password?
           </button>
         </form>
+      </div>
+      </div>
+      <div className="col login">
+        <img src="images/login-img.jpeg" alt="hvh" height={400} width={600}/>
+      </div>
+
       </div>
     </Layout>
   );
