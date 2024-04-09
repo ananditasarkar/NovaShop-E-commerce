@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
+import { useCart } from "../context/cart";
+import toast from "react-hot-toast";
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [auth, setAuth] = useAuth();
+  const [cart , setCart] = useCart();
 
   //initalp details
   useEffect(() => {
@@ -35,6 +40,7 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+
   return (
     <Layout>
       <div className="row container mt-5 mx-auto">
@@ -49,13 +55,34 @@ const ProductDetails = () => {
         </div>
         <div className="col-md-6 ">
           {/* add brand name */}
-          <h6>{product.name}</h6>
-          <h6>₹ {(product.price).toFixed(2)}</h6>
-          <button className="btn btn-secondary ms-1">ADD TO CART</button>
+          <h4>{product.name}</h4>
+          <h2>{product?.price?.toLocaleString("en-IN", {
+              style: "currency",
+              currency: "INR",
+          })}</h2>
+          <button
+            className="btn btn-secondary ms-1"
+            onClick={() => {
+              setCart([...cart, product]);
+              localStorage.setItem("cart", JSON.stringify([...cart, product]));
+              toast.success("Item added successfully");
+            }}
+          >
+            ADD TO CART
+          </button>
           {/* <h6>Category : {product?.category?.name}</h6> */}
+          {auth?.user?.address && (
+            <>
+              <hr />
+              <div className="mb-3">
+                <h4>Deliver to</h4>
+                <h5>{auth?.user?.address}</h5>
+              </div>
+            </>
+          )}
           <hr />
           <h4>Description </h4>
-            <h6> {product.description}</h6>
+          <h6> {product.description}</h6>
         </div>
       </div>
       <hr />
