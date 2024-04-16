@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <>
       {/* first navbar */}
-      <div className="bg-dark text-white d-flex justify-content-between px-5  first-navbar">
+      {/* <div className="bg-dark text-white d-flex justify-content-between px-5  first-navbar">
         <div>
           <div className="p-2 d-inline-block">
             <span className="p-2">
@@ -113,12 +113,10 @@ const Header = () => {
               </ul>
             </div>
 
-            {/* 
-               
-              <span>My Accounts</span> */}
+           
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* second navbar */}
       <nav className=" navbar-expand-lg sticky-top navbar-dark bg-black second-navbar">

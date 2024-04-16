@@ -96,19 +96,23 @@ const CartPage = () => {
           <div className="col-md-8">
             {cart?.map((p) => (
               <div className="row mb-2 p-3 card flex-row" key={p._id}>
+               
                 <div className="col-md-4">
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
+                    className=" img-fluid"
                     alt={p.name}
-                    width="100px"
-                    height={"100px"}
+                    // width="100px"
+                    // height={200}
                   />
                 </div>
                 <div className="col-md-8">
+                <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
+                  <p>{p.brand}</p>
                   <p>{p.name}</p>
-                  <p>{p.description.substring(0, 30)}</p>
+                  {/* <p>{p.description.substring(0, 30)}</p> */}
                   <p>Price : {p.price}</p>
+                </a>
                   <button
                     className="btn btn-danger"
                     onClick={() => removeCartItem(p._id)}
@@ -130,7 +134,7 @@ const CartPage = () => {
                   <h4>Current Address</h4>
                   <h5>{auth?.user?.address}</h5>
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-warning"
                     onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address

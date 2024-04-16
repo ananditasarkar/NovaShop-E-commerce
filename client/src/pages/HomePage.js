@@ -7,6 +7,15 @@ import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import toast from "react-hot-toast";
+
+import { NavLink, Link } from "react-router-dom";
+import useCategory from "../hooks/useCategory";
+import "./HomePage.css";
+
+// carousel
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 const HomePage = () => {
   const [cart, setCart] = useCart();
   const navigate = useNavigate();
@@ -112,44 +121,103 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
+
   return (
     <Layout title={"ALl Products - Best offers "}>
-      <div className="container-fluid row mt-3">
-        <div className="col-md-2">
-          <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column">
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                onChange={(e) => handleFilter(e.target.checked, c._id)}
-              >
+      {/* this show all categories */}
+      <div className="container-fluid category-container px-5 bg-dark text-light">
+        <div className="d-inline-block">
+          <Link className="dropdown-item" to={"/categories"}>
+            All Categories
+          </Link>
+        </div>
+
+        <ul className=" category-show d-inline-block p-0">
+          {categories?.map((c) => (
+            <li>
+              <Link className="dropdown-item" to={`/category/${c.slug}`}>
                 {c.name}
-              </Checkbox>
-            ))}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/* carousel */}
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={0}
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          />
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={1}
+            aria-label="Slide 2"
+          />
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={2}
+            aria-label="Slide 3"
+          />
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img
+              src="images/carousel-1.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
-          {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
-                </div>
-              ))}
-            </Radio.Group>
+          <div className="carousel-item">
+            <img
+              src="images/carousel-2.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
-          <div className="d-flex flex-column">
-            <button
-              className="btn btn-danger"
-              onClick={() => window.location.reload()}
-            >
-              RESET FILTERS
-            </button>
+          <div className="carousel-item">
+            <img
+              src="images/carousel-3.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
         </div>
-        <div className="col-md-9">
-          <h1 className="text-center all">All Products</h1>
-          <div className="d-flex flex-wrap">
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span className="carousel-control-next-icon" aria-hidden="true" />
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+      {/* All products */}
+      
+        
+      <h1 className="text-center all">All Products</h1>
+          <div className="d-flex flex-wrap mx-5">
             {products?.map((p) => (
               <div className="card m-2" style={{ width: "12rem" }}>
                   <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
@@ -159,7 +227,7 @@ const HomePage = () => {
                     alt={p.name}
                   />
                   <div className="card-body">
-                    <h6 className="card-title">{p.name.substring(0, 50)}...</h6>
+                    <h6 className="card-title">{p.name.substring(0, 30)}...</h6>
                     {/* <p className="card-text">
                       {p.description.substring(0, 30)}...
                     </p> */}
@@ -206,8 +274,12 @@ const HomePage = () => {
               </button>
             )}
           </div>
-        </div>
-      </div>
+        
+        
+              
+     
+      
+      
     </Layout>
   );
 };
