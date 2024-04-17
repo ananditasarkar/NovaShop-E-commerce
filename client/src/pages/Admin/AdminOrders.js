@@ -95,8 +95,8 @@ const AdminOrders = () => {
                           src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
-                          width="100px"
-                          height={"100px"}
+                          style={{maxHeight: "150px", maxWidth: "100%" , objectFit: "contain"}}
+
                         />
                       </div>
                       <div className="col-md-8">

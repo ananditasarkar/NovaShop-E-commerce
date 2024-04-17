@@ -1,8 +1,12 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
 import { useSearch } from "../context/search";
+import { useNavigate } from "react-router-dom";
+
 const Search = () => {
   const [values, setValues] = useSearch();
+  const navigate = useNavigate();
+
   return (
     <Layout title={"Search results"}>
       <div className="container">
@@ -15,21 +19,29 @@ const Search = () => {
           </h6>
           <div className="d-flex flex-wrap mt-4">
             {values?.results.map((p) => (
-              <div className="card m-2" style={{ width: "18rem" }}>
+              <div className="card m-2  text-center px-3" style={{ width: "12rem" }}>
+                <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
+
                 <img
                   src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
+                  style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
+
                   alt={p.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{p.name}</h5>
+                  <h6 className="card-title">{p.name.substring(0, 20)}</h6>
                   <p className="card-text">
                     {p.description.substring(0, 30)}...
                   </p>
-                  <p className="card-text"> $ {p.price}</p>
-                  <button className="btn btn-primary ms-1">More Details</button>
-                  <button className="btn btn-secondary ms-1">ADD TO CART</button>
+                  <p className="card-text">{p?.price?.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}</p>
+                  {/* <button className="btn btn-primary ms-1">More Details</button>
+                  <button className="btn btn-secondary ms-1">ADD TO CART</button> */}
                 </div>
+                </a>
               </div>
             ))}
           </div>

@@ -12,6 +12,7 @@ const UpdateProduct = () => {
   const params = useParams();
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
+  const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
@@ -29,7 +30,7 @@ const UpdateProduct = () => {
       setName(data.product.name);
       setId(data.product._id);
       setDescription(data.product.description);
-      setPrice(data.product.price);
+      setBrand(data.product.brand);
       setPrice(data.product.price);
       setQuantity(data.product.quantity);
       setShipping(data.product.shipping);
@@ -65,6 +66,7 @@ const UpdateProduct = () => {
     try {
       const productData = new FormData();
       productData.append("name", name);
+      productData.append("brand", brand);
       productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity", quantity);
@@ -168,6 +170,15 @@ const UpdateProduct = () => {
                   placeholder="write a name"
                   className="form-control"
                   onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="text"
+                  value={brand}
+                  placeholder="write brand name"
+                  className="form-control"
+                  onChange={(e) => setBrand(e.target.value)}
                 />
               </div>
               <div className="mb-3">

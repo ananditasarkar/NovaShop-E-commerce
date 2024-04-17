@@ -145,9 +145,8 @@ const Footer = () => {
                   </li>
                 </ul>
                 <span className="copyright mb-3">
-                  Copyright ©2024 All rights reserved | This Project is made
-                  with <i className="fa fa-heart-o" aria-hidden="true" /> by{" "}
-                  <a href="https://colorlib.com" target="_blank">
+                  Copyright ©2024 All rights reserved | This Project is made by{" "}
+                  <a href="#" target="_blank">
                     Aniket Ikhar
                   </a>
                 </span>

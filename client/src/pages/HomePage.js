@@ -216,18 +216,20 @@ const HomePage = () => {
       {/* All products */}
       
         
-      <h1 className="text-center all">All Products</h1>
+      <h1 className="text-center all ">Products Available</h1>
           <div className="d-flex flex-wrap mx-5">
             {products?.map((p) => (
-              <div className="card m-2" style={{ width: "12rem" }}>
+              <div className="card m-2 text-center" style={{ width: "12rem" }}>
                   <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
+                    className="img-fluid px-3"
+                    style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
+                    
                     alt={p.name}
                   />
-                  <div className="card-body">
-                    <h6 className="card-title">{p.name.substring(0, 30)}...</h6>
+                  <div className="card-body text-start">
+                    <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
                     {/* <p className="card-text">
                       {p.description.substring(0, 30)}...
                     </p> */}

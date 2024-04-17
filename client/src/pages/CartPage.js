@@ -81,7 +81,7 @@ const CartPage = () => {
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
-              {`Hello ${auth?.token && auth?.user?.name}`}
+              {`Now, it's time to buy`}
             </h1>
             <h4 className="text-center">
               {cart?.length
@@ -95,20 +95,22 @@ const CartPage = () => {
         <div className="row">
           <div className="col-md-8">
             {cart?.map((p) => (
-              <div className="row mb-2 p-3 card flex-row" key={p._id}>
+              <div className="row mb-2 p-3 card text-center flex-row" key={p._id}>
                
                 <div className="col-md-4">
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                     className=" img-fluid"
                     alt={p.name}
+                    style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
+
                     // width="100px"
                     // height={200}
                   />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-8 text-start">
                 <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
-                  <p>{p.brand}</p>
+                  <h5>{p.brand}</h5>
                   <p>{p.name}</p>
                   {/* <p>{p.description.substring(0, 30)}</p> */}
                   <p>Price : {p.price}</p>

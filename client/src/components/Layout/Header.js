@@ -119,7 +119,9 @@ const Header = () => {
       </div> */}
 
       {/* second navbar */}
-      <nav className=" navbar-expand-lg sticky-top navbar-dark bg-black second-navbar">
+      <nav className=" navbar-expand-lg sticky-top navbar-dark
+      
+      bg-dark second-navbar" style={{}}>
         <div className="container-fluid  d-flex justify-content-around">
           <div className="flex-item-1 navbar-brand">
             <Link to="/" className="navbar-brand text-capitalize">
