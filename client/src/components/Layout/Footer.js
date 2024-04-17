@@ -19,19 +19,19 @@ const Footer = () => {
                   <ul className="footer-links">
                     <li>
                       <a href="#">
-                        <i className="fa fa-map-marker" />
+                        <i className="fa fa-map-marker text-danger" />
                         1734 Stonecoal Road
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-phone" />
-                        +021-95-51-84
+                        <i className="fa fa-phone text-danger" />
+                        +1 021-95-51-84
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-envelope-o" />
+                        <i className="fa fa-envelope text-danger" />
                         email@email.com
                       </a>
                     </li>
@@ -63,7 +63,7 @@ const Footer = () => {
               
               <div className="col-12 col-md-6 col-lg-3 ">
                 <div className="footer">
-                  <h3 className="footer-title">Information</h3>
+                  <h3 className="footer-title">Informations</h3>
                   <ul className="footer-links">
                     <li>
                       <a href="#">About Us</a>
@@ -85,7 +85,7 @@ const Footer = () => {
               </div>
               <div className="col-12 col-md-6 col-lg-3">
                 <div className="footer">
-                  <h3 className="footer-title">Service</h3>
+                  <h3 className="footer-title">Services</h3>
                   <ul className="footer-links">
                     <li>
                       <a href="#">My Account</a>
@@ -115,40 +115,40 @@ const Footer = () => {
                 <ul className="footer-payments">
                   <li>
                     <a href="#">
-                      <i className="fa fa-cc-visa" />
+                    <i class="fa-brands fa-cc-visa text-secondary" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-credit-card" />
+                      <i className="fa fa-credit-card text-secondary" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-cc-paypal" />
+                      <i className="fa-brands fa-cc-paypal text-secondary" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-cc-mastercard" />
+                      <i className="fa-brands fa-cc-mastercard text-secondary" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-cc-discover" />
+                      <i className="fa-brands fa-cc-discover text-secondary" />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-cc-amex" />
+                      <i className="fa-brands fa-cc-amex text-secondary" />
                     </a>
                   </li>
                 </ul>
                 <span className="copyright mb-3">
-                  Copyright ©2024 All rights reserved | This Project is made by{" "}
-                  <a href="#" target="_blank">
-                    Aniket Ikhar
-                  </a>
+                  Copyright &copy; 2024. All Rights Reserved | This Project is made by{" "}
+                  <a href="#" target="_blank" class="fs-5 fst-italic text-decoration-none" style={{color:"#DC3545"}}>
+                    NovaShop
+                  </a>.
                 </span>
               </div>
             </div>

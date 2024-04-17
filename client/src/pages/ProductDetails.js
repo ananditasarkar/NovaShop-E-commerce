@@ -47,7 +47,9 @@ const ProductDetails = () => {
         <div className="col-md-6 d-flex justify-content-center">
           <img
             src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
-            className="img-fluid "
+            className="img-fluid"
+            
+            style={{maxHeight: "25rem" }}
             alt={product.name}
             // height="300"
             // width={"350px"}

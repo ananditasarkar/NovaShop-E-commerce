@@ -45,6 +45,8 @@ const HomePage = () => {
     getAllCategory();
     getTotal();
   }, []);
+
+
   //get products
   const getAllProducts = async () => {
     try {
@@ -76,6 +78,8 @@ const HomePage = () => {
     if (page === 1) return;
     loadMore();
   }, [page]);
+
+  
   //load more
   const loadMore = async () => {
     try {
@@ -172,21 +176,21 @@ const HomePage = () => {
           />
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active">
+          <div className="carousel-item active" data-bs-interval="3000">
             <img
               src="images/carousel-1.jpg"
               className="d-block w-100"
               alt="..."
             />
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item" data-bs-interval="3000">
             <img
               src="images/carousel-2.jpg"
               className="d-block w-100"
               alt="..."
             />
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item" data-bs-interval="3000">
             <img
               src="images/carousel-3.jpg"
               className="d-block w-100"
@@ -219,45 +223,25 @@ const HomePage = () => {
       <h1 className="text-center all ">Products Available</h1>
           <div className="d-flex flex-wrap mx-5">
             {products?.map((p) => (
-              <div className="card m-2 text-center" style={{ width: "12rem" }}>
+              <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
                   <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                    className="img-fluid px-3"
+                    className="card-img-top px-3"
                     style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
                     
                     alt={p.name}
                   />
                   <div className="card-body text-start">
                     <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
-                    {/* <p className="card-text">
-                      {p.description.substring(0, 30)}...
-                    </p> */}
+                    
                     <p className="card-text fw-bold">
                       {p?.price?.toLocaleString("en-IN", {
                         style: "currency",
                         currency: "INR",
                       })}
                     </p>
-                    {/* <button
-                      className="btn btn-primary ms-1"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button> */}
-                    {/* <button
-                      className="btn btn-secondary ms-1"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item added successfully");
-                      }}
-                    >
-                      ADD TO CART
-                    </button> */}
+                    
                   </div>
                 </a>
               </div>
@@ -266,7 +250,8 @@ const HomePage = () => {
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
-                className="btn btn-warning"
+                className="btn text-white"
+                style={{background: "orangered"}}
                 onClick={(e) => {
                   e.preventDefault();
                   setPage(page + 1);

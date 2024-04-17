@@ -24,17 +24,20 @@
   
   .footer-links li a {
     color: #B9BABC;
+    text-decoration: none;
   }
   
   .footer-links li i {
     margin-right: 15px;
-    color: #D10024;
+    /* color: #D10024; */
+    /* color: #DC3545; */
     width: 14px;
     text-align: center;
   }
   
   .footer-links li a:hover {
-    color: #D10024;
+    /* color: #D10024; */
+    color: #DC3545;
   }
   
   .copyright {
