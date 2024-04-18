@@ -235,6 +235,28 @@ export const productCountController = async (req, res) => {
   }
 };
 
+// product filter by category TV 
+
+export const productsByCategoryTV = async (req,res) => {
+  try {
+    const products = await productModel
+     .find({ category: "65ff12122bd2b5a49da8ebb4" })
+     .select("-photo")
+     .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in product controller of productByCategoryTV",
+      error,
+    });
+  }
+}
+
 // product list base on page
 export const productListController = async (req, res) => {
   try {

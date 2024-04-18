@@ -11,6 +11,7 @@ import {
   productFiltersController,
   productListController,
   productPhotoController,
+  productsByCategoryTV,
   realtedProductController,
   searchProductController,
   updateProductController,
@@ -51,6 +52,9 @@ router.delete("/delete-product/:pid", deleteProductController);
 
 //filter product
 router.post("/product-filters", productFiltersController);
+
+// filter by category TV
+router.get("/category-tv", productsByCategoryTV)
 
 //product count
 router.get("/product-count", productCountController);
