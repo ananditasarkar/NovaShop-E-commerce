@@ -320,7 +320,7 @@ const HomePage = () => {
       </div>
       
       {/* products by category mobiles */}
-      <h1 className="text-center all ">Mobiles</h1>
+      <h1 className="text-center mobile ">Mobiles</h1>
           <div className="d-flex flex-wrap mx-5">
             {mobileproducts?.map((p) => (
               <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
@@ -351,7 +351,7 @@ const HomePage = () => {
 
 
       {/* products by category TV */}
-      <h1 className="text-center all ">TVs</h1>
+      <h1 className="text-center tv ">TVs</h1>
           <div className="d-flex flex-wrap mx-5">
             {tvproducts?.map((p) => (
               <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
@@ -381,7 +381,7 @@ const HomePage = () => {
 
       
       {/* products by category laptops */}
-      <h1 className="text-center all ">Laptops</h1>
+      <h1 className="text-center laptop ">Laptops</h1>
           <div className="d-flex flex-wrap mx-5">
             {laptopsproducts?.map((p) => (
               <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
@@ -411,7 +411,7 @@ const HomePage = () => {
 
       
       {/* products by category Headphones */}
-      <h1 className="text-center all ">Headphones</h1>
+      <h1 className="text-center headphone ">Headphones</h1>
           <div className="d-flex flex-wrap mx-5">
             {headphoneproducts?.map((p) => (
               <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
@@ -441,7 +441,7 @@ const HomePage = () => {
 
       
       {/* products by category watches */}
-      <h1 className="text-center all ">Watches</h1>
+      <h1 className="text-center watches ">Watches</h1>
           <div className="d-flex flex-wrap mx-5">
             {watchesproducts?.map((p) => (
               <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
