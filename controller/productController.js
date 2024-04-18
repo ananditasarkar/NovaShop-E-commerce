@@ -279,6 +279,74 @@ export const productsByCategoryMobilesController = async (req, res) => {
   }
 };
 
+
+// products filter by category mobiles
+export const productsByCategoryLaptopsController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({ category: "661e1f38eccdfa9a895e0fed" })
+      .select("-photo")
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in product controller of productByCategoryMobiles",
+      error,
+    });
+  }
+};
+
+
+// products filter by category mobiles
+export const productsByCategoryHeadphonesController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({ category: "661e2298867de5a9bbad20d5" })
+      .select("-photo")
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in product controller of productByCategoryMobiles",
+      error,
+    });
+  }
+};
+
+
+// products filter by category mobiles
+export const productsByCategoryWatchesController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({ category: "65ff13f1ae71a01c14fe87aa" })
+      .select("-photo")
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in product controller of productByCategoryMobiles",
+      error,
+    });
+  }
+};
+
+
+
 // product list base on page
 export const productListController = async (req, res) => {
   try {

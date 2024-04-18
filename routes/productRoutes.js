@@ -11,8 +11,11 @@ import {
   productFiltersController,
   productListController,
   productPhotoController,
+  productsByCategoryHeadphonesController,
+  productsByCategoryLaptopsController,
   productsByCategoryMobilesController,
   productsByCategoryTVController,
+  productsByCategoryWatchesController,
   realtedProductController,
   searchProductController,
   updateProductController,
@@ -55,11 +58,19 @@ router.delete("/delete-product/:pid", deleteProductController);
 router.post("/product-filters", productFiltersController);
 
 // filter by category TV
-router.get("/category-tv", productsByCategoryTVController)
+router.get("/category-tv", productsByCategoryTVController);
 
+// filter by category mobiles
+router.get("/category-mobiles", productsByCategoryMobilesController);
 
-// filter by category TV
-router.get("/category-mobiles", productsByCategoryMobilesController)
+// filter by category laptops
+router.get("/category-laptops", productsByCategoryLaptopsController);
+
+// filter by category headphones
+router.get("/category-headphones", productsByCategoryHeadphonesController);
+
+// filter by category watches
+router.get("/category-watches", productsByCategoryWatchesController);
 
 //product count
 router.get("/product-count", productCountController);
