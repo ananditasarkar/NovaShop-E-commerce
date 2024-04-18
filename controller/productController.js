@@ -9,7 +9,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//payment gateway 
+//payment gateway
 var gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
   merchantId: process.env.BRAINTREE_MERCHANT_ID,
@@ -235,14 +235,14 @@ export const productCountController = async (req, res) => {
   }
 };
 
-// product filter by category TV 
+// product filter by category TV
 
-export const productsByCategoryTV = async (req,res) => {
+export const productsByCategoryTVController = async (req, res) => {
   try {
     const products = await productModel
-     .find({ category: "65ff12122bd2b5a49da8ebb4" })
-     .select("-photo")
-     .sort({ createdAt: -1 });
+      .find({ category: "65ff12122bd2b5a49da8ebb4" })
+      .select("-photo")
+      .sort({ createdAt: -1 });
     res.status(200).send({
       success: true,
       products,
@@ -255,7 +255,29 @@ export const productsByCategoryTV = async (req,res) => {
       error,
     });
   }
-}
+};
+
+
+// products filter by category mobiles
+export const productsByCategoryMobilesController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({ category: "65ff122a2bd2b5a49da8ebbc" })
+      .select("-photo")
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in product controller of productByCategoryMobiles",
+      error,
+    });
+  }
+};
 
 // product list base on page
 export const productListController = async (req, res) => {
@@ -382,7 +404,7 @@ export const brainTreePaymentController = async (req, res) => {
         paymentMethodNonce: nonce,
         options: {
           submitForSettlement: true,
-        }, 
+        },
       },
       function (error, result) {
         if (result) {

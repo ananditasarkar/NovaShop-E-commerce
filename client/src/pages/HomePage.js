@@ -21,6 +21,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [tvproducts, setTVProducts] = useState([]);
+  const [mobileproducts, setMobileProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
@@ -80,6 +81,23 @@ const HomePage = () => {
     }
   };
 
+  //  get products by category mobiles
+
+  const getProductByMobiles = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/category-mobiles`
+      );
+      setLoading(false);
+      setMobileProducts(data.products);
+    }
+    catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  }
+
   //getTOtal COunt
   const getTotal = async () => {
     try {
@@ -130,6 +148,7 @@ const HomePage = () => {
     if (!checked.length || !radio.length) {
       getAllProducts();
       getProductByTV();
+      getProductByMobiles();
     }
   }, [checked.length, radio.length]);
 
@@ -242,6 +261,37 @@ const HomePage = () => {
         </button>
       </div>
       
+      {/* products by category mobiles */}
+      <h1 className="text-center all ">Mobiles</h1>
+          <div className="d-flex flex-wrap mx-5">
+            {mobileproducts?.map((p) => (
+              <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
+                  <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
+                  <img
+                    src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                    className="card-img-top px-3"
+                    style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
+                    
+                    alt={p.name}
+                  />
+                  <div className="card-body text-start">
+                    <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
+                    
+                    <p className="card-text fw-bold">
+                      {p?.price?.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </p>
+                    
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+
+
+
       {/* products by category TV */}
       <h1 className="text-center all ">TVs</h1>
           <div className="d-flex flex-wrap mx-5">
