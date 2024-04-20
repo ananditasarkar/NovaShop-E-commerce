@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [auth, setAuth] = useAuth();
-  const [cart , setCart] = useCart();
+  const [cart, setCart] = useCart();
 
   //initalp details
   useEffect(() => {
@@ -48,8 +48,7 @@ const ProductDetails = () => {
           <img
             src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
             className="img-fluid"
-            
-            style={{maxHeight: "25rem" }}
+            style={{ maxHeight: "25rem" }}
             alt={product.name}
             // height="300"
             // width={"350px"}
@@ -58,12 +57,14 @@ const ProductDetails = () => {
         <div className="col-md-6 ">
           {/* add brand name */}
           <h4>{product.name}</h4>
-          <h2>{product?.price?.toLocaleString("en-IN", {
+          <h2>
+            {product?.price?.toLocaleString("en-IN", {
               style: "currency",
               currency: "INR",
-          })}</h2>
+            })}
+          </h2>
           <button
-            className="btn btn-secondary ms-1"
+            className="btn btn-danger ms-1"
             onClick={() => {
               setCart([...cart, product]);
               localStorage.setItem("cart", JSON.stringify([...cart, product]));
@@ -95,24 +96,37 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" style={{ width: "18rem" }}>
-              <img
-                src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p?._id}`}
-                className="card-img-top"
-                alt={p.name}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p className="card-text">{p.description.substring(0, 30)}...</p>
-                <p className="card-text"> $ {p.price}</p>
-                <button
-                  className="btn btn-primary ms-1"
-                  onClick={() => navigate(`/product/${p.slug}`)}
-                >
-                  More Details
-                </button>
-                <button className="btn btn-secondary ms-1">ADD TO CART</button>
-              </div>
+            <div
+              className="card m-2 text-center shadow"
+              style={{ width: "12rem" }}
+            >
+              <a
+                onClick={() => navigate(`/product/${p.slug}`)}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                  className="card-img-top px-3"
+                  style={{
+                    height: "250px",
+                    maxWidth: "100%",
+                    
+                    maxHeight: "200px",
+                    objectFit: "contain",
+                  }}
+                  alt={p.name}
+                />
+                <div className="card-body text-start">
+                  <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
+
+                  <p className="card-text fw-bold">
+                    {p?.price?.toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </p>
+                </div>
+              </a>
             </div>
           ))}
         </div>

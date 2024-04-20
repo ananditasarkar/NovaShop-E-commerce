@@ -13,8 +13,8 @@ import useCategory from "../hooks/useCategory";
 import "./HomePage.css";
 
 // carousel
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const HomePage = () => {
   const [cart, setCart] = useCart();
@@ -228,6 +228,27 @@ const HomePage = () => {
   };
 
 
+  // for making responsive carousel
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1028 },
+      items: 5
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2
+    }
+  };
+
   return (
     <Layout title={"ALl Products - Best offers "}>
       {/* this show all categories */}
@@ -347,6 +368,33 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+
+      <Carousel responsive={responsive} className="container">
+      {tvproducts?.map((p) => (
+              <div className="card m-2 text-center shadow" style={{ width: "12rem" }}>
+                  <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
+                  <img
+                    src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                    className="card-img-top px-3"
+                    style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
+                    
+                    alt={p.name}
+                  />
+                  <div className="card-body text-start">
+                    <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
+                    
+                    <p className="card-text fw-bold">
+                      {p?.price?.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </p>
+                    
+                  </div>
+                </a>
+              </div>
+            ))}
+      </Carousel>
 
 
 
