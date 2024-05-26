@@ -280,28 +280,50 @@ const HomePage = () => {
             data-bs-slide-to={2}
             aria-label="Slide 3"
           />
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={3}
+            aria-label="Slide 4"
+          />
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active" data-bs-interval="3000">
+          <Link className="dropdown-item" to={`/product/Samsung-Galaxy-F55-5G`}>
             <img
-              src="images/carousel-1.jpg"
+              src="images/banner11.webp"
               className="d-block w-100"
               alt="..."
             />
+            </Link>
           </div>
           <div className="carousel-item" data-bs-interval="3000">
+          <Link className="dropdown-item" to={`/product/Motorola-Edge-50-Pro-5G`}>
             <img
               src="images/carousel-2.jpg"
               className="d-block w-100"
               alt="..."
             />
+            </Link>
           </div>
           <div className="carousel-item" data-bs-interval="3000">
+          <Link className="dropdown-item" to={`/product/Motorola-Edge-50-Fusion-(Marshmallow-Blue-128-GB)-(8-GB-RAM)JustHere`}>
             <img
-              src="images/carousel-3.jpg"
+              src="images/banner12.webp"
               className="d-block w-100"
               alt="..."
             />
+            </Link>
+            
+          </div>
+          <div className="carousel-item" data-bs-interval="3000">
+          <Link className="dropdown-item" to={`/product/Poco-F6-5G-(12GB-RAM-+256GB)`}>
+            <img
+              src="images/banner13.webp"
+              className="d-block w-100"
+              alt="..."
+            />
+            </Link>
           </div>
         </div>
         <button

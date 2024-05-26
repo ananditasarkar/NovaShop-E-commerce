@@ -11,6 +11,15 @@
     display: none;
 }
 
+.addtocart{
+    transition: 0.4s;
+}
+
+.addtocart:hover{
+    transform: scale(1.10);
+    transition: 0.4s;
+}
+
 @media (max-width: 768px) {
     .product-detail{
         height: auto;

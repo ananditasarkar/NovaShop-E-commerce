@@ -24,7 +24,7 @@ const Search = () => {
 
                 <img
                   src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                  className="card-img-top"
+                  className="card-img-top pt-1"
                   style={{height: '250px', maxWidth: "100%" , maxHeight: "250px" , objectFit: 'contain'}}
 
                   alt={p.name}

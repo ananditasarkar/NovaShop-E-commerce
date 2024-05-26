@@ -81,7 +81,7 @@ const ProductDetails = () => {
             })}
           </h2>
           <button
-            className="btn btn-warning rounded-0 ms-1 px-5 py-2"
+            className="btn btn-warning rounded-0 ms-1 px-5 py-2 addtocart"
             onClick={() => {
               setCart([...cart, product]);
               localStorage.setItem("cart", JSON.stringify([...cart, product]));
