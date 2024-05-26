@@ -5,6 +5,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
+import { BsFillCartPlusFill } from "react-icons/bs";
+import './ProductDetails.css';
+
+// Helper function to split the description string
+const splitDescription = (description) => {
+  // Split by period and filter out empty strings after trimming
+  return description.split('.').map(point => point.trim()).filter(point => point);
+};
+
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -12,12 +21,14 @@ const ProductDetails = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
+  const [points, setPoints] = useState([]);
 
-  //initalp details
+  // Initial product details
   useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
-  //getProduct
+
+  // Get product details
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
@@ -25,11 +36,17 @@ const ProductDetails = () => {
       );
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
+
+      if (data?.product?.description) {
+        const formattedPoints = splitDescription(data.product.description);
+        setPoints(formattedPoints);
+      }
     } catch (error) {
       console.log(error);
     }
   };
-  //get similar product
+
+  // Get similar products
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
@@ -43,20 +60,20 @@ const ProductDetails = () => {
 
   return (
     <Layout>
-      <div className="row container mt-5 mx-auto">
-        <div className="col-md-6 d-flex justify-content-center">
-          <img
-            src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
-            className="img-fluid"
-            style={{ maxHeight: "25rem" }}
-            alt={product.name}
-            // height="300"
-            // width={"350px"}
-          />
+      <div className="row container pt-5 mx-auto ">
+        <div className="col-12 col-md-6  ">
+          <div className="d-flex justify-content-center shadow py-5 rounded-3 bg-white">
+            <img
+              src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
+              className="img-fluid"
+              style={{ maxHeight: "25rem" }}
+              alt={product.name}
+            />
+          </div>
         </div>
-        <div className="col-md-6 ">
-          {/* add brand name */}
-          <h4>{product.name}</h4>
+        <div className="col-12 col-md-6 ps-md-5 pt-5 pt-md-0 product-detail" >
+          <h5>{product.brand}</h5>
+          <h3>{product.name}</h3>
           <h2>
             {product?.price?.toLocaleString("en-IN", {
               style: "currency",
@@ -64,41 +81,47 @@ const ProductDetails = () => {
             })}
           </h2>
           <button
-            className="btn btn-danger ms-1"
+            className="btn btn-warning rounded-0 ms-1 px-5 py-2"
             onClick={() => {
               setCart([...cart, product]);
               localStorage.setItem("cart", JSON.stringify([...cart, product]));
               toast.success("Item added successfully");
             }}
           >
-            ADD TO CART
+            <BsFillCartPlusFill /> ADD TO CART
           </button>
-          {/* <h6>Category : {product?.category?.name}</h6> */}
+         
+          <hr />
+          <h4>Features & Details</h4>
+          <ul>
+            {points.map((point, index) => (
+              <li key={index} className=""><h6>{point}</h6></li>
+            ))}
+          </ul>
+
           {auth?.user?.address && (
             <>
               <hr />
               <div className="mb-3">
                 <h4>Deliver to</h4>
-                <h5>{auth?.user?.address}</h5>
+                <p>{auth?.user?.address}</p>
               </div>
             </>
           )}
-          <hr />
-          <h4>Description </h4>
-          <h6> {product.description}</h6>
         </div>
       </div>
       <hr />
-      <div className="row container">
-        <h6>Similar Products</h6>
+      <div className="container">
+        <h4>Similar Products</h4>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
-        <div className="d-flex flex-wrap">
+        <div className="container d-flex flex-wrap mx-auto">
           {relatedProducts?.map((p) => (
             <div
               className="card m-2 text-center shadow"
               style={{ width: "12rem" }}
+              key={p._id}
             >
               <a
                 onClick={() => navigate(`/product/${p.slug}`)}
@@ -110,7 +133,6 @@ const ProductDetails = () => {
                   style={{
                     height: "250px",
                     maxWidth: "100%",
-                    
                     maxHeight: "200px",
                     objectFit: "contain",
                   }}
@@ -118,7 +140,6 @@ const ProductDetails = () => {
                 />
                 <div className="card-body text-start">
                   <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
-
                   <p className="card-text fw-bold">
                     {p?.price?.toLocaleString("en-IN", {
                       style: "currency",

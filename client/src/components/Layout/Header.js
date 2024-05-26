@@ -6,6 +6,7 @@ import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
 import "./Header.css";
+import { BsCart4 } from "react-icons/bs";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -25,6 +26,7 @@ const Header = () => {
   return (
     <>
       {/* first navbar */}
+
       {/* <div className="bg-dark text-white d-flex justify-content-between px-5  first-navbar">
         <div>
           <div className="p-2 d-inline-block">
@@ -119,9 +121,12 @@ const Header = () => {
       </div> */}
 
       {/* second navbar */}
-      <nav className=" navbar-expand-lg sticky-top navbar-dark
+      <nav
+        className=" navbar-expand-lg sticky-top navbar-dark
       
-      bg-dark second-navbar" style={{}}>
+      bg-dark second-navbar"
+        style={{}}
+      >
         <div className="container-fluid  d-flex justify-content-around">
           <div className="flex-item-1 navbar-brand">
             <Link to="/" className="navbar-brand text-capitalize">
@@ -159,11 +164,11 @@ const Header = () => {
                     Categories
                   </Link>
                   <ul className="dropdown-menu">
-                    <li>
+                    {/* <li>
                       <Link className="dropdown-item" to={"/categories"}>
                         All Categories
                       </Link>
-                    </li>
+                    </li> */}
                     {categories?.map((c) => (
                       <li>
                         <Link
@@ -194,7 +199,7 @@ const Header = () => {
                           to="/register"
                           className="nav-link not-login text-black"
                         >
-                          Register
+                          Sign Up
                         </NavLink>
                       </li>
                       <li>
@@ -202,7 +207,7 @@ const Header = () => {
                           to="/login"
                           className="nav-link not-login text-black"
                         >
-                          Login
+                          Sign In
                         </NavLink>
                       </li>
                     </ul>
@@ -244,9 +249,11 @@ const Header = () => {
                   </>
                 )}
                 <li className="nav-item ">
+                  
+
                   <div className="text-white bg-transparent position-relative">
                     <NavLink to="/cart" className="nav-link">
-                      Cart
+                      <BsCart4 className="fs-4 text-white" />
                     </NavLink>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {cart?.length}

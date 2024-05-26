@@ -184,6 +184,7 @@ const UpdateProduct = () => {
               <div className="mb-3">
                 <textarea
                   type="text"
+                  rows={10}
                   value={description}
                   placeholder="write a description"
                   className="form-control"

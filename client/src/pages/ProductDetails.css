@@ -1,0 +1,19 @@
+
+
+/* style={{maxHeight: "600px" , overflowY: "scroll"}} */
+
+.product-detail{
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.product-detail::-webkit-scrollbar{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .product-detail{
+        height: auto;
+        overflow : none;
+    }
+}

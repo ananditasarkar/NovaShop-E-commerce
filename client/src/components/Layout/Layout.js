@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     <div>
       <Header />
       <Toaster />
-      <main style={{ minHeight: "70vh"}}>{children}</main>
+      <main className="bg-body-secondary" style={{ minHeight: "70vh"}}>{children}</main>
       <Footer />
     </div>
   );

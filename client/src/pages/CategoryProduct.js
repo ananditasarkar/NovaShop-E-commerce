@@ -25,40 +25,44 @@ const CategoryProduct = () => {
 
   return (
     <Layout>
-      <div className="container mt-3">
+      <div className="container mx-auto pt-3 pb-5">
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{products?.length} result found </h6>
         <div className="row">
-          <div className="col-md-9 offset-1">
+          <div className="col-12">
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
-                <div
-                  className="card m-2"
-                  style={{ width: "18rem" }}
-                  key={p._id}
-                >
-                  <img
-                    src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text">
-                      {p.description.substring(0, 30)}...
-                    </p>
-                    <p className="card-text"> $ {p.price}</p>
-                    <button
-                      className="btn btn-primary ms-1"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button>
-                    <button className="btn btn-secondary ms-1">
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
+               <div
+               className="card m-2 text-center shadow"
+               style={{ width: "12rem" }}
+             >
+               <a
+                 onClick={() => navigate(`/product/${p.slug}`)}
+                 style={{ cursor: "pointer" }}
+               >
+                 <img
+                   src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                   className="card-img-top px-3 py-2"
+                   style={{
+                     height: "250px",
+                     maxWidth: "100%",
+                     maxHeight: "250px",
+                     objectFit: "contain",
+                   }}
+                   alt={p.name}
+                 />
+                 <div className="card-body text-start">
+                   <h6 className="card-title">{p.name.substring(0, 32)}...</h6>
+ 
+                   <p className="card-text fw-bold">
+                     {p?.price?.toLocaleString("en-IN", {
+                       style: "currency",
+                       currency: "INR",
+                     })}
+                   </p>
+                 </div>
+               </a>
+             </div>
               ))}
             </div>
             {/* <div className="m-2 p-3">
