@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
-
 import axios from "axios";
-import { Checkbox, Radio } from "antd";
-import { Prices } from "../components/Prices";
-import toast from "react-hot-toast";
-
 import { NavLink, Link } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
 import "./HomePage.css";
@@ -229,11 +224,11 @@ const HomePage = () => {
       items: 5,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 756},
       items: 3,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 756, min: 0 },
       items: 2,
     },
   };

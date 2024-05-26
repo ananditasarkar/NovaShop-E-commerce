@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import { useSearch } from "../../context/search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import './SearchInput.css';
 const SearchInput = () => {
   const [values, setValues] = useSearch();
   const navigate = useNavigate();
+  const ref = useRef("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,18 +17,20 @@ const SearchInput = () => {
       );
       setValues({ ...values, results: data });
       navigate("/search");
+      ref.current.value = "";
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <div className="search">
+    <div className="search mt-2">
       <form className="d-flex " role="search" onSubmit={handleSubmit}>
         <input
           className="search-input"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          ref={ref}
           value={values.keyword}
           onChange={(e) => setValues({ ...values, keyword: e.target.value })}
         />

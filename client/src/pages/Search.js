@@ -17,7 +17,7 @@ const Search = () => {
               ? "No Products Found"
               : `Found ${values?.results.length}`}
           </h6>
-          <div className="d-flex flex-wrap mt-4">
+          <div className="d-flex flex-wrap mt-4 pb-5">
             {values?.results.map((p) => (
               <div className="card m-2  text-center px-3" style={{ width: "12rem" }}>
                 <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>

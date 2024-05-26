@@ -133,7 +133,7 @@ const Header = () => {
               <h2>NovaShop</h2>
             </Link>
           </div>
-          <div className="flex-item-2">
+          <div className="flex-item-2 ">
             <SearchInput />
           </div>
           <div className="flex-item-3">
@@ -148,13 +148,9 @@ const Header = () => {
             >
               <span className="navbar-toggler-icon" />
             </button>
+            
             <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                {/* <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
-                  Home
-                </NavLink>
-              </li> */}
                 <li className="nav-item dropdown u">
                   <Link
                     className="nav-link dropdown-toggle q"
@@ -164,11 +160,6 @@ const Header = () => {
                     Categories
                   </Link>
                   <ul className="dropdown-menu">
-                    {/* <li>
-                      <Link className="dropdown-item" to={"/categories"}>
-                        All Categories
-                      </Link>
-                    </li> */}
                     {categories?.map((c) => (
                       <li>
                         <Link
@@ -249,8 +240,6 @@ const Header = () => {
                   </>
                 )}
                 <li className="nav-item ">
-                  
-
                   <div className="text-white bg-transparent position-relative">
                     <NavLink to="/cart" className="nav-link">
                       <BsCart4 className="fs-4 text-white" />

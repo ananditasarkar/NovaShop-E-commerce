@@ -27,6 +27,7 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
+import TandC from "./pages/TandC";
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="/tandc" element={<TandC />} />
 
         <Route path="*" element={<Pagenotfound />} />
       </Routes>

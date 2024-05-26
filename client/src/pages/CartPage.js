@@ -77,10 +77,10 @@ const CartPage = () => {
   };
   return (
     <Layout>
-      <div className="container">
+      <div className="container py-4">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
+            <h1 className="text-center p-2 mb-1">
               {`Now, it's time to buy`}
             </h1>
             <h4 className="text-center">
@@ -92,8 +92,8 @@ const CartPage = () => {
             </h4>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-8">
+        <div className="row g-md-5">
+          <div className="col-12 col-md-8 ">
             {cart?.map((p) => (
               <div className="row mb-2 p-3 card text-center flex-row" key={p._id}>
                
@@ -110,8 +110,8 @@ const CartPage = () => {
                 </div>
                 <div className="col-md-8 text-start">
                 <a onClick={() => navigate(`/product/${p.slug}`)} style={{cursor: "pointer"}}>
-                  <h5>{p.brand}</h5>
-                  <p>{p.name}</p>
+                  <p>{p.brand}</p>
+                  <h5>{p.name}</h5>
                   {/* <p>{p.description.substring(0, 30)}</p> */}
                   <p>Price : {p.price}</p>
                 </a>
@@ -125,7 +125,7 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-4 text-center">
+          <div className="col-12 col-md-4 text-center ">
             <h2>Cart Summary</h2>
             <p>Total | Checkout | Payment</p>
             <hr />

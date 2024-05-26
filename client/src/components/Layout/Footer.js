@@ -11,28 +11,28 @@ const Footer = () => {
             <div className="row">
               <div className="col-12 col-md-6 col-lg-3">
                 <div className="footer">
-                  <h3 className="footer-title">About Us</h3>
+                  <h2 className="footer-title">NovaShop</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut.
+                    Discover seamless shopping with NovaShop - your ultimate
+                    eCommerce solution for a stellar online store experience.
                   </p>
-                  <ul className="footer-links">
+                  <ul className="footer-links list-unstyled">
                     <li>
                       <a href="#">
-                        <i className="fa fa-map-marker text-danger" />
-                        1734 Stonecoal Road
+                        <i className="fa fa-map" />
+                        Jagnade Square, Nagpur
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-phone text-danger" />
-                        +1 021-95-51-84
+                        <i className="fa fa-phone" />
+                        +91 9518926198
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-envelope text-danger" />
-                        email@email.com
+                        <i className="fa fa-envelope" />
+                        novashop@ecommerce.com
                       </a>
                     </li>
                   </ul>
@@ -41,44 +41,54 @@ const Footer = () => {
               <div className="col-12 col-md-6 col-lg-3">
                 <div className="footer">
                   <h3 className="footer-title">Categories</h3>
-                  <ul className="footer-links">
+                  <ul className="footer-links list-unstyled">
                     <li>
-                      <a href="#">Hot deals</a>
+                      <Link className="dropdown-item" to={`/category/mobiles`}>
+                        Mobiles
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Laptops</a>
+                      <Link className="dropdown-item" to={`/category/laptops`}>
+                        Laptops
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Smartphones</a>
+                      <Link className="dropdown-item" to={`/category/tvs`}>
+                        TV's
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Cameras</a>
+                      <Link
+                        className="dropdown-item"
+                        to={`/category/headphones`}
+                      >
+                        Headphones
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Accessories</a>
+                      <Link className="dropdown-item" to={`/category/watches`}>
+                        Watches
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
-              
+
               <div className="col-12 col-md-6 col-lg-3 ">
                 <div className="footer">
                   <h3 className="footer-title">Informations</h3>
-                  <ul className="footer-links">
+                  <ul className="footer-links list-unstyled">
                     <li>
-                      <a href="#">About Us</a>
+                      <a href="/about">About Us</a>
                     </li>
                     <li>
-                      <a href="#">Contact Us</a>
+                      <a href="/contact">Contact Us</a>
                     </li>
                     <li>
-                      <a href="#">Privacy Policy</a>
+                      <a href="/policy">Privacy Policy</a>
                     </li>
                     <li>
-                      <a href="#">Orders and Returns</a>
-                    </li>
-                    <li>
-                      <a href="#">Terms &amp; Conditions</a>
+                      <a href="/tandc">Terms &amp; Conditions</a>
                     </li>
                   </ul>
                 </div>
@@ -86,22 +96,18 @@ const Footer = () => {
               <div className="col-12 col-md-6 col-lg-3">
                 <div className="footer">
                   <h3 className="footer-title">Services</h3>
-                  <ul className="footer-links">
+                  <ul className="footer-links list-unstyled">
                     <li>
-                      <a href="#">My Account</a>
+                      <a href="dashboard/user/profile">My Account</a>
                     </li>
                     <li>
-                      <a href="#">View Cart</a>
+                      <a href="/cart">View Cart</a>
                     </li>
+                    
                     <li>
-                      <a href="#">Wishlist</a>
+                      <a href="/dashboard/user/orders">Track My Order</a>
                     </li>
-                    <li>
-                      <a href="#">Track My Order</a>
-                    </li>
-                    <li>
-                      <a href="#">Help</a>
-                    </li>
+                   
                   </ul>
                 </div>
               </div>
@@ -115,7 +121,7 @@ const Footer = () => {
                 <ul className="footer-payments">
                   <li>
                     <a href="#">
-                    <i class="fa-brands fa-cc-visa text-secondary" />
+                      <i class="fa-brands fa-cc-visa text-secondary" />
                     </a>
                   </li>
                   <li>
@@ -145,10 +151,17 @@ const Footer = () => {
                   </li>
                 </ul>
                 <span className="copyright mb-3">
-                  Copyright &copy; 2024. All Rights Reserved | This Project is made by{" "}
-                  <a href="#" target="_blank" class="fs-5 fst-italic text-decoration-none" style={{color:"#DC3545"}}>
+                  Copyright &copy; 2024. All Rights Reserved | This Project is
+                  made by{" "}
+                  <a
+                    href="/"
+                    target="_blank"
+                    class="fs-5 fst-italic text-decoration-none"
+                    style={{ color: "#DC3545" }}
+                  >
                     NovaShop
-                  </a>.
+                  </a>
+                  .
                 </span>
               </div>
             </div>
